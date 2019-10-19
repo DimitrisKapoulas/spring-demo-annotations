@@ -5,12 +5,15 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 @Component
-@Scope("prototype")
+
 public class TennisCoach implements Coach {
 
     @Autowired
-    @Qualifier("randomFortuneService")
+    @Qualifier("fileFortuneService")
     private FortuneService fortuneService;
 
 //    @Autowired
@@ -29,6 +32,18 @@ public class TennisCoach implements Coach {
 //        System.out.println(">> TennisCoach: inside setter method");
 //        fortuneService = theFortuneService;
 //    }
+
+    //define my init method
+    @PreDestroy
+    public void doMyCleanupStuff() {
+        System.out.println(">> TennisCoach: inside of my doMyCleanupStuff()");
+    }
+
+    //define my destroy method
+    @PostConstruct
+    public void doMyStartupStuff() {
+        System.out.println(">> TennisCoach: inside of my doMyStartupStuff()");
+    }
 
     @Override
     public String getDailyWorkout() {

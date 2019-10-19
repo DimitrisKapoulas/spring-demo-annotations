@@ -11,16 +11,12 @@ public class AnnotationBeanScopeApp {
 
         //retrieve bean from spring container
         Coach theCoach = context.getBean("tennisCoach",Coach.class);
-        Coach alphaCoach = context.getBean("tennisCoach",Coach.class);
 
-        //check if they are the same
-        boolean result = (theCoach == alphaCoach);
+        //call a method on the bean
+        System.out.println(theCoach.getDailyWorkout());
 
-        //print out the results
-        System.out.println("\n Pointing to the same object: " + result);
-        System.out.println("\n Memory Location for theCoach: " + theCoach);
-        System.out.println("\n Memory Location for alphaCoach: " +  alphaCoach);
-
+        //call method to get the daily fortune
+        System.out.println(theCoach.getDailyFortune());
         //close the context
         context.close();
     }
