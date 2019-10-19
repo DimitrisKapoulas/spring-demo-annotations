@@ -9,7 +9,6 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 @Component
-
 public class TennisCoach implements Coach {
 
     @Autowired
